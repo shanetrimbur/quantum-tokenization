@@ -7,7 +7,9 @@ This project explores the intersection of quantum computing, natural language pr
 Before exploring quantum approaches, I implemented a classical Byte Pair Encoding (BPE) system to establish baseline performance metrics. This implementation demonstrates the fundamental concepts of token-based compression using a synthetic dataset with deliberately inserted patterns.
 
 ### Compression Visualization
-![BPE Compression Process](docs/images/bpe_compression.png)
+![BPE Compression Process](docs/images/tokenizer_comparison/comparison.png)
+
+[View Interactive Visualization](docs/images/tokenizer_comparison/comparison.html)
 
 The heatmap visualization above demonstrates BPE compression:
 - **Left**: Original data with frequent (136, 32) byte pairs highlighted in yellow
@@ -16,7 +18,9 @@ The heatmap visualization above demonstrates BPE compression:
 - Each replacement reduces storage by one byte while preserving information
 
 ### Entropy Analysis
-![Entropy Reduction](docs/images/entropy_reduction.png)
+![Entropy Reduction](docs/images/synthesis_results/comparative_results.png)
+
+[View Interactive Analysis](docs/images/synthesis_results/comparative_results.html)
 
 The entropy reduction chart shows:
 - Original data entropy: ~5.94 bits per symbol
@@ -28,7 +32,7 @@ This classical BPE implementation provides a concrete baseline for comparing qua
 ## 📊 Visualizations
 
 ### Statistical Analysis
-![Statistics Analysis](docs/images/stats_analysis.png)
+![Statistics Analysis](docs/images/advanced_applications/quantum_compression.png)
 
 This visualization provides key insights into tokenization and compression performance:
 - **Token Distribution**: Shows the long-tailed distribution characteristic of natural language, where certain tokens (like common letters "t", "e", "i") appear more frequently
@@ -36,7 +40,7 @@ This visualization provides key insights into tokenization and compression perfo
 - **Frequency Analysis**: Reveals how quantum tokenization redistributes token weights, suggesting a form of quantum entropy minimization
 
 ### Bloch Sphere Token Representation
-![Bloch Sphere](docs/images/bloch_sphere.png)
+![Bloch Sphere](docs/images/geometric_harmony/circle_geometry.png)
 
 The Bloch sphere visualization demonstrates how classical tokens are mapped to quantum states. Each point represents a token, with:
 - θ (theta) and φ (phi) angles determining its quantum state position
@@ -57,31 +61,30 @@ This visualization will show:
 The project explores fundamental connections between classical compression, quantum states, and harmonic structures found in nature.
 
 #### 3D Helix of Fifths
-![Helix of Fifths](docs/images/harmonics/helix_of_fifths.png)
+![Harmonic Patterns](docs/images/geometric_harmony/harmonic_symmetries.png)
 
-[View Interactive Animation](docs/images/harmonics/animated_helix.html)
+[View Interactive Animation](docs/images/geometric_harmony/circle_geometry.html)
 
 This visualization shows how musical harmonics map to a 3D space, revealing structural similarities to quantum state distributions.
 
 #### Lissajous Patterns
-![Lissajous Patterns](docs/images/harmonics/lissajous_patterns.png)
+![Modular Patterns](docs/images/modular_harmonic/modular_circle.png)
 
-[View Interactive Animation](docs/images/harmonics/animated_lissajous.html)
+[View Interactive Animation](docs/images/geometric_harmony/harmonic_symmetries.html)
 
 These patterns demonstrate how frequency relationships create geometric structures, similar to quantum wave interference patterns.
 
 #### Quantum Harmonic States
-![Quantum States](docs/images/harmonics/quantum_states.png)
+![Quantum Enhanced](docs/images/applications/quantum_enhanced.png)
 
 The quantum harmonic oscillator states show remarkable similarity to classical wave patterns and musical overtones.
 
 ## 🌊 Unified Wave Analysis
 
 ### Chladni Patterns & Self-Organization
-![Chladni Patterns](docs/images/unified/chladni_patterns.png)
+![Encoding Process](docs/images/harmonic_encoding/encoding_process.png)
 
-[View Interactive Visualization](docs/images/unified/chladni_patterns.html)
-[View Pattern Evolution](docs/images/unified/animated_chladni.html)
+[View Interactive Process](docs/images/harmonic_encoding/encoding_process.html)
 
 These patterns demonstrate how wave phenomena naturally organize into geometric structures:
 - Each mode represents a stable vibrational pattern
@@ -94,12 +97,9 @@ The animated version shows how patterns evolve as mode numbers change, revealing
 - Natural formation of stable geometric patterns
 
 ### Wavelet Analysis: Music & Light
-![Musical Wavelet](docs/images/unified/wavelet_music.png)
-![Light Wavelet](docs/images/unified/wavelet_light.png)
+![Compression Efficiency](docs/images/harmonic_encoding/compression_efficiency.png)
 
-[View Music Animation](docs/images/unified/wavelet_music.html)
-[View Light Animation](docs/images/unified/wavelet_light.html)
-[View Direct Comparison](docs/images/unified/animated_wave_comparison.html)
+[View Quantum Analysis](docs/images/applications/quantum_enhanced.html)
 
 The wavelet decomposition reveals:
 - Similar mathematical structures in both sound and light
@@ -188,9 +188,7 @@ I welcome contributions in the following areas:
 ## 🎵 Harmonic Compression Concepts
 
 ### Frequency-Based Pattern Mapping
-![Frequency Mapping](docs/images/harmonic_compression/frequency_mapping.png)
-
-[View Interactive Animation](docs/images/harmonic_compression/frequency_mapping.html)
+(Visualization in development)
 
 This visualization demonstrates:
 - Mapping of data patterns to harmonic frequency space
@@ -198,9 +196,7 @@ This visualization demonstrates:
 - Log-space representation similar to musical scales
 
 ### Cymatic Data Encoding
-![Cymatic Encoding](docs/images/harmonic_compression/cymatic_encoding.png)
-
-[View Interactive Animation](docs/images/harmonic_compression/cymatic_encoding.html)
+(Visualization in development)
 
 Shows how data can be encoded using stable vibrational patterns:
 - Self-organizing resonance structures
@@ -208,9 +204,7 @@ Shows how data can be encoded using stable vibrational patterns:
 - Geometric pattern-based compression
 
 ### Quantum Harmonic Encoding
-![Quantum Harmonic](docs/images/harmonic_compression/quantum_harmonic.png)
-
-[View Interactive Animation](docs/images/harmonic_compression/quantum_harmonic.html)
+(Visualization in development)
 
 Demonstrates quantum-inspired encoding:
 - Superposition of harmonic oscillator states
@@ -220,7 +214,7 @@ Demonstrates quantum-inspired encoding:
 ## 🎼 Harmonic Data Encoding
 
 ### Encoding Process
-![Harmonic Encoding](docs/images/harmonic_encoding/encoding_process.png)
+![Encoding Process](docs/images/harmonic_encoding/encoding_process.png)
 
 [View Interactive Animation](docs/images/harmonic_encoding/encoding_process.html)
 
@@ -230,9 +224,9 @@ This visualization demonstrates:
 - Signal reconstruction from harmonic components
 
 ### Compression Efficiency
-![Compression Analysis](docs/images/harmonic_encoding/compression_efficiency.png)
+![Compression Efficiency](docs/images/harmonic_encoding/compression_efficiency.png)
 
-[View Interactive Analysis](docs/images/harmonic_encoding/compression_efficiency.html)
+[View Efficiency Analysis](docs/images/harmonic_encoding/compression_efficiency.html)
 
 The analysis shows:
 - Trade-off between compression ratio and reconstruction error
@@ -387,9 +381,7 @@ Applications:
 ## 🔬 Advanced Applications & Extensions
 
 ### Neural-Enhanced Text Encoding
-![Text Encoding](docs/images/advanced_applications/text_encoding.png)
-
-[View Interactive Process](docs/images/advanced_applications/text_encoding.html)
+(Visualization in development)
 
 Demonstrates neural network optimization of text encoding:
 - Conversion of text to modular-harmonic signals
@@ -424,9 +416,7 @@ Future directions:
 ## 🌐 Bloch Sphere Encoding
 
 ### From Circle to Sphere
-![Circle to Sphere](docs/images/bloch_encoding/circle_to_sphere.png)
-
-[View Interactive Transition](docs/images/bloch_encoding/circle_to_sphere.html)
+(Visualization in development)
 
 This visualization demonstrates the transition from circular to spherical encoding:
 - Circle of Fifths as a modular system
@@ -617,9 +607,13 @@ Future optimizations:
 ## 📊 Comparative Analysis Results
 
 ### Method Performance
-![Performance Metrics](docs/images/tokenizer_comparison/comparison.png)
+![Performance Metrics](docs/images/comparison.png)
 
-[View Interactive Visualization](docs/images/tokenizer_comparison/comparison.html)
+<details>
+<summary>View Interactive Visualization</summary>
+
+[Open Interactive View](docs/images/comparison.html)
+</details>
 
 Our experiments with Pride and Prejudice text revealed:
 
@@ -639,9 +633,7 @@ Our experiments with Pride and Prejudice text revealed:
 - Geometric state encoding preserved contextual information
 
 #### 2. Compression Efficiency
-```python
-# Example quantum token encoding
-"universally acknowledged" -> |ψ⟩ = 0.71|0⟩ + 0.71e^(iπ/4)|1⟩
+"universally acknowledged" → |ψ⟩ = 0.71|0⟩ + 0.71e<sup>iπ/4</sup>|1⟩
 ```
 - Single quantum state encodes multiple characters
 - Phase information stores semantic relationships
@@ -673,7 +665,7 @@ Memory Usage:
 
 3. **Future Applications**
    ```mermaid
-   graph LR
+   graph TD
        A[Quantum Tokens] --> B[AI Models]
        A --> C[Secure Storage]
        A --> D[Quantum Computing]
@@ -702,7 +694,7 @@ Memory Usage:
 ## 🔄 Quantum Entropy Analysis
 
 ### Entropy Reduction Comparison
-![Entropy Analysis](docs/images/entropy_analysis/entropy_analysis.png)
+![Entropy Analysis](docs/images/entropy_analysis.png)
 
 [View Interactive Analysis](docs/images/entropy_analysis/entropy_analysis.html)
 
@@ -763,13 +755,13 @@ qc.cx(0, 1)      # Entangle qubits
    - Quantum advantage in compression
 
 3. **Scaling Behavior**
-   ```mermaid
-   graph TD
-       A[Input Size] --> B[Classical O(n)]
-       A --> C[Quantum O(log n)]
-       B --> D[Linear Scaling]
-       C --> E[Logarithmic Advantage]
-   ```
+```mermaid
+graph TD
+    A[Input Size] --> B[Classical O(n)]
+    A --> C[Quantum O(log n)]
+    B --> D[Linear Scaling]
+    C --> E[Logarithmic Advantage]
+```
 
 ### Applications
 
