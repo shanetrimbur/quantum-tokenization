@@ -1,15 +1,15 @@
 # Quantum Tokenization and Compression
 
-This project explores the intersection of quantum computing, natural language processing, and information theory to develop a unified compression framework. By mapping classical tokens onto quantum states, we aim to achieve more efficient data representation and compression.
+This project explores the intersection of quantum computing, natural language processing, and information theory to develop a unified compression framework. By mapping classical tokens onto quantum states, I aim to achieve more efficient data representation and compression.
 
 ## 📊 Visualizations
 
 ### Statistical Analysis
 ![Statistics Analysis](docs/images/stats_analysis.png)
 
-This visualization provides key insights into our tokenization and compression performance:
+This visualization provides key insights into tokenization and compression performance:
 - **Token Distribution**: Shows the long-tailed distribution characteristic of natural language, where certain tokens (like common letters "t", "e", "i") appear more frequently
-- **Compression Efficiency**: Demonstrates that our quantum-based compression achieves higher efficiency with fewer tokens compared to classical methods
+- **Compression Efficiency**: Demonstrates that quantum-based compression achieves higher efficiency with fewer tokens compared to classical methods
 - **Frequency Analysis**: Reveals how quantum tokenization redistributes token weights, suggesting a form of quantum entropy minimization
 
 ### Bloch Sphere Token Representation
@@ -66,16 +66,16 @@ This visualization will show:
 
 ## 🔬 Technical Approach
 
-Our approach combines three fundamental areas:
+My approach combines three fundamental areas:
 
 ### Classical Tokenization
-Based on Byte Pair Encoding (BPE) principles from Sennrich et al. (2015), we implement token merging strategies optimized for quantum state mapping.
+Based on Byte Pair Encoding (BPE) principles from Sennrich et al. (2015), I implement token merging strategies optimized for quantum state mapping.
 
 ### Quantum State Encoding
-Following Schumacher's quantum coding theorem (1995), we map classical tokens to quantum states while preserving information fidelity.
+Following Schumacher's quantum coding theorem (1995), I map classical tokens to quantum states while preserving information fidelity.
 
 ### Entropy Optimization
-We utilize both Shannon's classical entropy theory (1948) and quantum relative entropy measures (Vedral, 2002) to optimize compression.
+I utilize both Shannon's classical entropy theory (1948) and quantum relative entropy measures (Vedral, 2002) to optimize compression.
 
 ## 📚 References
 
@@ -96,10 +96,9 @@ We utilize both Shannon's classical entropy theory (1948) and quantum relative e
 
 ## 🤝 Contributing
 
-We welcome contributions in the following areas:
+I welcome contributions in the following areas:
 - Quantum circuit implementation for token state encoding
 - Classical-quantum tokenization interfaces
 - Visualization tools for quantum state analysis
 - Mathematical proofs bridging classical and quantum compression theories
 
-Please refer to our contributing guidelines and review the referenced papers before submitting proposals. 
