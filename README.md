@@ -9,6 +9,8 @@ Before exploring quantum approaches, I implemented a classical Byte Pair Encodin
 ### Compression Visualization
 ![BPE Compression Process](docs/images/tokenizer_comparison/comparison.png)
 
+[View Interactive Visualization](docs/images/tokenizer_comparison/comparison.html)
+
 The heatmap visualization above demonstrates BPE compression:
 - **Left**: Original data with frequent (136, 32) byte pairs highlighted in yellow
 - **Right**: Compressed data where pairs are replaced with token 999 (red)
@@ -17,6 +19,8 @@ The heatmap visualization above demonstrates BPE compression:
 
 ### Entropy Analysis
 ![Entropy Reduction](docs/images/synthesis_results/comparative_results.png)
+
+[View Interactive Analysis](docs/images/synthesis_results/comparative_results.html)
 
 The entropy reduction chart shows:
 - Original data entropy: ~5.94 bits per symbol
@@ -184,9 +188,7 @@ I welcome contributions in the following areas:
 ## 🎵 Harmonic Compression Concepts
 
 ### Frequency-Based Pattern Mapping
-![Frequency Mapping](docs/images/harmonic_compression/frequency_mapping.png)
-
-[View Interactive Animation](docs/images/harmonic_compression/frequency_mapping.html)
+(Visualization in development)
 
 This visualization demonstrates:
 - Mapping of data patterns to harmonic frequency space
@@ -194,9 +196,7 @@ This visualization demonstrates:
 - Log-space representation similar to musical scales
 
 ### Cymatic Data Encoding
-![Cymatic Encoding](docs/images/harmonic_compression/cymatic_encoding.png)
-
-[View Interactive Animation](docs/images/harmonic_compression/cymatic_encoding.html)
+(Visualization in development)
 
 Shows how data can be encoded using stable vibrational patterns:
 - Self-organizing resonance structures
@@ -204,9 +204,7 @@ Shows how data can be encoded using stable vibrational patterns:
 - Geometric pattern-based compression
 
 ### Quantum Harmonic Encoding
-![Quantum Harmonic](docs/images/harmonic_compression/quantum_harmonic.png)
-
-[View Interactive Animation](docs/images/harmonic_compression/quantum_harmonic.html)
+(Visualization in development)
 
 Demonstrates quantum-inspired encoding:
 - Superposition of harmonic oscillator states
@@ -383,9 +381,7 @@ Applications:
 ## 🔬 Advanced Applications & Extensions
 
 ### Neural-Enhanced Text Encoding
-![Text Encoding](docs/images/advanced_applications/text_encoding.png)
-
-[View Interactive Process](docs/images/advanced_applications/text_encoding.html)
+(Visualization in development)
 
 Demonstrates neural network optimization of text encoding:
 - Conversion of text to modular-harmonic signals
@@ -420,9 +416,7 @@ Future directions:
 ## 🌐 Bloch Sphere Encoding
 
 ### From Circle to Sphere
-![Circle to Sphere](docs/images/bloch_encoding/circle_to_sphere.png)
-
-[View Interactive Transition](docs/images/bloch_encoding/circle_to_sphere.html)
+(Visualization in development)
 
 This visualization demonstrates the transition from circular to spherical encoding:
 - Circle of Fifths as a modular system
