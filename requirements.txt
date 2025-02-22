@@ -1,0 +1,7 @@
+numpy
+qiskit
+qiskit-aer
+plotly
+nbconvert
+jupyter
+kaleido 
