@@ -1,3 +1,8 @@
 *.py linguist-detectable=true
+*.py linguist-language=Python
+
 *.ipynb linguist-detectable=true
-*.md linguist-detectable=false 
+*.ipynb linguist-language=Python
+
+*.html linguist-detectable=false
+*.md linguist-detectable=false
