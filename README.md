@@ -2,6 +2,29 @@
 
 This project explores the intersection of quantum computing, natural language processing, and information theory to develop a unified compression framework. By mapping classical tokens onto quantum states, I aim to achieve more efficient data representation and compression.
 
+## Classical BPE Analysis
+
+Before exploring quantum approaches, I implemented a classical Byte Pair Encoding (BPE) system to establish baseline performance metrics. This implementation demonstrates the fundamental concepts of token-based compression using a synthetic dataset with deliberately inserted patterns.
+
+### Compression Visualization
+![BPE Compression Process](docs/images/bpe_compression.png)
+
+The heatmap visualization above demonstrates BPE compression:
+- **Left**: Original data with frequent (136, 32) byte pairs highlighted in yellow
+- **Right**: Compressed data where pairs are replaced with token 999 (red)
+- The color intensity represents byte values
+- Each replacement reduces storage by one byte while preserving information
+
+### Entropy Analysis
+![Entropy Reduction](docs/images/entropy_reduction.png)
+
+The entropy reduction chart shows:
+- Original data entropy: ~5.94 bits per symbol
+- Post-compression entropy: ~5.71 bits per symbol
+- Achieved entropy reduction: ~0.23 bits per symbol (~4% improvement)
+
+This classical BPE implementation provides a concrete baseline for comparing quantum tokenization approaches.
+
 ## 📊 Visualizations
 
 ### Statistical Analysis
