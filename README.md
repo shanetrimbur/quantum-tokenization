@@ -613,9 +613,13 @@ Future optimizations:
 ## 📊 Comparative Analysis Results
 
 ### Method Performance
-![Performance Metrics](docs/images/tokenizer_comparison/comparison.png)
+![Performance Metrics](docs/images/comparison.png)
 
-[View Interactive Visualization](docs/images/tokenizer_comparison/comparison.html)
+<details>
+<summary>View Interactive Visualization</summary>
+
+[Open Interactive View](docs/images/comparison.html)
+</details>
 
 Our experiments with Pride and Prejudice text revealed:
 
@@ -635,9 +639,7 @@ Our experiments with Pride and Prejudice text revealed:
 - Geometric state encoding preserved contextual information
 
 #### 2. Compression Efficiency
-```python
-# Example quantum token encoding
-"universally acknowledged" -> |ψ⟩ = 0.71|0⟩ + 0.71e^(iπ/4)|1⟩
+"universally acknowledged" → |ψ⟩ = 0.71|0⟩ + 0.71e<sup>iπ/4</sup>|1⟩
 ```
 - Single quantum state encodes multiple characters
 - Phase information stores semantic relationships
@@ -669,7 +671,7 @@ Memory Usage:
 
 3. **Future Applications**
    ```mermaid
-   graph LR
+   graph TD
        A[Quantum Tokens] --> B[AI Models]
        A --> C[Secure Storage]
        A --> D[Quantum Computing]
@@ -698,7 +700,7 @@ Memory Usage:
 ## 🔄 Quantum Entropy Analysis
 
 ### Entropy Reduction Comparison
-![Entropy Analysis](docs/images/entropy_analysis/entropy_analysis.png)
+![Entropy Analysis](docs/images/entropy_analysis.png)
 
 [View Interactive Analysis](docs/images/entropy_analysis/entropy_analysis.html)
 
@@ -759,13 +761,13 @@ qc.cx(0, 1)      # Entangle qubits
    - Quantum advantage in compression
 
 3. **Scaling Behavior**
-   ```mermaid
-   graph TD
-       A[Input Size] --> B[Classical O(n)]
-       A --> C[Quantum O(log n)]
-       B --> D[Linear Scaling]
-       C --> E[Logarithmic Advantage]
-   ```
+```mermaid
+graph TD
+    A[Input Size] --> B[Classical O(n)]
+    A --> C[Quantum O(log n)]
+    B --> D[Linear Scaling]
+    C --> E[Logarithmic Advantage]
+```
 
 ### Applications
 
