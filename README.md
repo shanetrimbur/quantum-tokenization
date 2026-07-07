@@ -1,5 +1,10 @@
 # Quantum Tokenization and Compression
 
+> ### 🎼 [**Play the Circle Composer →**](https://shanetrimbur.github.io/quantum-tokenization/)
+> Four layered circular sequencers on the circle of fifths — draw patterns, set loop
+> lines and tempos per circle, shape each note's sound, and export your song as MIDI.
+> Runs entirely in the browser, nothing to install.
+
 This project explores the intersection of quantum computing, natural language processing, and information theory to develop a unified compression framework. By mapping classical tokens onto quantum states, I aim to achieve more efficient data representation and compression.
 
 ## Classical BPE Analysis
