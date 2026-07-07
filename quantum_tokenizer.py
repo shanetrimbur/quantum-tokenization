@@ -11,8 +11,12 @@ from plotly.subplots import make_subplots
 from plotly.io import write_image
 
 class QuantumTokenizer:
-    def __init__(self, num_merges: int = 10):
+    def __init__(self, num_merges: int = 10, placement: str = 'chord'):
+        """placement: 'chord' (spiral-of-fifths centroid, geometry encodes
+        token content — see harmonic_placement.py), 'sum' (exact circle-group
+        homomorphism, content-hash-like), or 'random' (legacy null model)."""
         self.num_merges = num_merges
+        self.placement = placement
         self.vocab: Dict[str, Tuple[float, float]] = {}  # token -> (theta, phi)
         self.tokens: List[str] = []
         
@@ -42,6 +46,15 @@ class QuantumTokenizer:
 
     def map_to_bloch(self, tokens: List[str]) -> None:
         """Map tokens to quantum states on Bloch sphere"""
+        if self.placement in ('chord', 'sum'):
+            from collections import Counter as _Counter
+            from harmonic_placement import chord_placement, harmonic_placement
+            place = chord_placement if self.placement == 'chord' else harmonic_placement
+            placed = place(_Counter(tokens))
+            for token, angles in placed.items():
+                if token not in self.vocab:
+                    self.vocab[token] = angles
+            return
         unique_tokens = set(tokens)
         for token in unique_tokens:
             if token not in self.vocab:

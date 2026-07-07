@@ -36,3 +36,11 @@ docs/images/*/*.png
 *.log
 .DS_Store
 
+
+# Bulky / re-downloadable audio (see real_audio_analysis.py + data/wtc/major_preludes.txt)
+data/wtc/*.mp3
+data/wtc/*.wav
+data/*.wav
+
+# Local media, not for the public repo
+Coltrane.MP4

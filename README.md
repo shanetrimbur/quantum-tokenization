@@ -699,6 +699,195 @@ Memory Usage:
    - Study scaling with larger datasets
    - Explore multi-qubit encodings
 
+## 🎼 Circle-of-Fifths Token Placement (New)
+
+Token positions on the Bloch sphere are no longer random — they are now derived
+from harmonic/modular structure (`harmonic_placement.py`):
+
+- **φ (longitude) — harmonic content.** Each byte is a "note" on the *continuous*
+  spiral of fifths: `φ = 2π·frac(byte · log₂(3/2))`. Because `log₂(3/2)` is
+  irrational, the spiral never closes — the familiar 12-tone Circle of Fifths is
+  its rational approximation (12 fifths ≈ 7 octaves). A token is treated as the
+  **chord** of its characters and placed at the circular mean of its notes —
+  Elaine Chew's Spiral Array "center of effect," applied to text.
+- **θ (latitude) — information content.** Normalized surprisal (−log₂ p):
+  frequent tokens sit near |0⟩, rare tokens migrate toward |1⟩.
+
+An alternative `sum` rule adds character angles mod 2π — an *exact* group
+homomorphism from token concatenation to U(1) (BPE merge = interval addition),
+verified to ~1e-13 rad. It preserves composition but, being an equidistributed
+(Weyl) map, destroys locality — it behaves like a content hash.
+
+### Does the geometry mean anything? (Falsifiable test)
+
+BPE over 100k chars of *Pride and Prejudice* (238 tokens, 28,203 pairs).
+Spearman ρ between geodesic distance and token similarity — meaningful
+geometry requires **negative** ρ (similar tokens closer together):
+
+| Placement | vs content similarity | vs PPMI (distributional) |
+|-----------|----------------------|--------------------------|
+| Chord centroid | **−0.196** (p ≈ 1e−242) | −0.024 (p ≈ 5e−05) |
+| Sum rule (homomorphism) | +0.022 | +0.027 |
+| Random (legacy) | +0.001 (n.s.) | +0.005 (n.s.) |
+
+The φ coordinate alone carries the full content signal (ρ = −0.195).
+Key lesson: modular/harmonic encoding gives you **algebraic** structure
+(composition = rotation) *or* **metric** structure (similar content = nearby
+states) depending on the placement rule — the chord-centroid rule trades the
+exact homomorphism for a geometry where distance is meaningful.
+
+Run it: `python3 harmonic_placement.py`
+(interactive comparison: `docs/images/fifths_placement/fifths_vs_random.html`)
+
+## 🎷 Audio-Derived Tokens: Giant Steps on the Bloch Sphere (New)
+
+The same placement rule applied to *audio*, where the notes are real
+(`audio_tokenizer.py`). Test piece: the Giant Steps changes (Coltrane), whose
+form cycles through three tonal centers a major third apart (B, G, E♭). That
+yields a falsifiable prediction: **token geometry should recover three key
+clusters roughly 120° apart on the circle of fifths.**
+
+Pipeline (no ground-truth leakage — key labels are used only for evaluation):
+
+1. Synthesize the changes as raw audio (`data/giant_steps.wav`)
+2. FFT → 12-bin chroma per frame → dominant pitch class = frame symbol
+3. Greedy BPE over the symbol stream → tokens are recurring pitch motifs
+4. Chord-centroid placement: each symbol is a note at its circle-of-fifths
+   longitude (`φ = 2π·(7·pc mod 12)/12`); a token sits at the circular mean
+   of its notes; latitude = surprisal
+
+### Results (1,101 frames → 71 tokens)
+
+| Test | Chord placement | Random placement |
+|------|----------------|------------------|
+| Geodesic dist. vs pitch-content similarity (Spearman ρ) | **−0.366** (p ≈ 8e−80) | −0.012 (n.s.) |
+| Tonal-center separation (across/within-key distance) | **1.20** (perm. p = 0.0005) | 0.98 (p = 0.88) |
+| Key-cluster longitudes | 92°, 99°, 168° apart (ideal: 120°) | — |
+
+The audio signal is *stronger* than text (−0.37 vs −0.20): pitch classes are
+the native alphabet of the circle of fifths, so the geometry fits without any
+byte-to-note metaphor. The three Coltrane tonal centers emerge as distinct
+regions of the sphere from raw audio alone.
+
+Run it: `python3 audio_tokenizer.py`
+(interactive: `docs/images/fifths_placement/audio_tokens.html`)
+
+## 🎹 Real Recordings: the Circle of Fifths Recovered from the WTC (New)
+
+The pipeline applied to *real* audio (`real_audio_analysis.py`): Kimiko
+Ishizaka's public-domain recording of Bach's Well-Tempered Clavier Book 1
+(archive.org: `bach-well-tempered-clavier-book-1`). The 12 major-key preludes
+traverse every major key, so the prediction is total: **their estimated tonal
+centers — computed from raw audio, no score data — should lay out as the
+circle of fifths.**
+
+Results (per-prelude token-cloud circular mean, one global rotation fitted):
+
+- **Mean angular error: 10.2°** against ~90° for chance; nearest-key
+  accuracy **9/12**
+- The fitted global offset came out **59.3° — theory predicts 60°** (the
+  circular mean of a major diatonic set sits exactly 2 fifths sharp of its
+  tonic)
+- The three misses (C, E, B♭) all drift one fifth flat-ward — Bach's
+  subdominant excursions, visible as geometry
+- Sliding-window tonal drift gives a per-piece **modulation timeline**
+  (`modulation_timeline()`)
+
+Run it: `python3 real_audio_analysis.py`
+(interactive: `docs/images/fifths_placement/wtc_circle.html`)
+
+## 🗂️ Harmonic Metadata, Taxonomy & Geometric Retrieval (New)
+
+`harmonic_metadata.py` turns the pipeline into a metadata system. Every
+recording gets a compact **harmonic signature** — estimated key angle,
+coherence (tonal focus, 0–1), modulation drift span, token entropy, and its
+top motifs with sphere coordinates — stored in `data/harmonic_catalog.json`.
+
+A **taxonomy** is read straight off the geometry, no human tagging:
+tonal center (12 branches) × coherence class (focused / tonal / chromatic) ×
+modulation class (static / mild / roving). On the current catalog it is
+genuinely discriminative — Giant Steps classifies as `chromatic/roving`
+(coherence 0.10, drift 66°) while Bach preludes are `focused/static`.
+
+**Geometric retrieval for composition:**
+
+- `compatible(piece)` — pieces whose tonal centers sit within one fifth on
+  the circle: what you can segue to or overlay without a clash
+- `motif_search(pcs)` — rank every motif in the library by circular distance
+  to a query pitch-class set: "find material that sounds like this chord"
+
+Run it: `python3 harmonic_metadata.py`
+
+## ✏️ Circle Composer (Interactive Tool)
+
+[`docs/circle_composer.html`](docs/circle_composer.html) — an in-browser
+instrument for the whole idea: **four layered circular sequencers** writing
+one score.
+
+- Each circle is a radial sequencer: a playhead sweeps the ring (full turn =
+  12 beats at the global BPM) and notes fire as it passes — position on the
+  circle is both *pitch* and *time*
+- Per-circle **loop line**: where the sweep restarts, quantized **on notes**,
+  **on the rests between them**, or **free** (any angle = fractional beats).
+  Different loop lines on different circles run simultaneous meters
+- Per-circle **BPM** (40–240) alongside the loop line, so layers run
+  different tempos at once; the global BPM slider overrides all four
+- Four color-coded layers, each with its own pattern, loop, tempo, octave,
+  mute, and show/hide; select any layer to edit
+- Global transport: **Record** starts the patterns *and* transcribes them;
+  **Play** auditions silently (no transcription); editing while stopped
+  makes no sound in the score
+- The score is a **dumb aggregator**: a raw real-time transcription of every
+  note from every circle at once — no imposed meter, no layer politics —
+  arranged best-effort on a rolling window with a seconds ruler. The full
+  song is kept and the MIDI download is the same tape note-for-note
+  (♩ = 1 second grid, one channel per layer, no time-signature meta)
+- **Per-note synthesis**: every note carries its own voice — waveform
+  (triangle/sine/saw/square/noise), lowpass filter (cutoff + resonance), LFO
+  routed to pitch, filter, or amp (rate + depth), attack and release. The
+  Sound panel is a brush for new notes; click any placed note to select and
+  reshape it live. **🎲 Randomize all** rolls fresh voices for every note in
+  the project; **Reset all to stock** restores the original triangle
+- **Free mode**: click anywhere on the ring for *continuous* microtonal
+  points (notated with cent deviations) — the circle is not just 12 places
+- The edit layer's **center of effect** (the same circular-mean statistic
+  the analysis code uses) rendered live inside the circle
+
+Open the file in any browser — fully self-contained, no dependencies.
+
+## 🎯 Three Major Use Cases
+
+**1. Harmonic fingerprinting for music retrieval.**
+A piece's token cloud on the sphere is a compact, geometry-aware signature.
+Because distance tracks harmonic content, standard geometric tools become
+music-retrieval tools: key and modulation detection (cluster centroids), cover
+song and style matching (cloud overlap), and structural analysis — Giant
+Steps' three-center symmetry is literally *visible* as three regions of the
+sphere. Classical MIR gets this from hand-built chroma features; here it falls
+out of a learned tokenizer plus one placement rule that works for any symbol
+stream, not just music.
+
+**2. Similarity-preserving codebooks for lossy compression.**
+BPE gives a codebook of recurring motifs; the placement makes that codebook
+*metric*: nearby states = harmonically interchangeable content. That enables
+graceful degradation — quantize a rare token to its nearest neighbor on the
+sphere and the reconstruction error is musically consonant rather than random
+(substituting a relative-minor motif, not white noise). The same property
+gives error-tolerant transmission: a small angular perturbation decodes to
+similar content. Classical vector-quantization codecs optimize this
+numerically; the fifths geometry provides it *a priori* for tonal data.
+
+**3. Quantum-native feature maps for machine learning.**
+Each token is, by construction, a preparable one-qubit state
+(`ry(θ); rz(φ)`) — a token stream compiles directly to a quantum circuit. The
+experiments above show the state geometry is meaningful (fidelity between
+token states reflects content similarity), which is precisely what a good
+quantum feature map requires: kernel methods and variational classifiers
+separate data by state overlap. This connects the project to QNLP frameworks
+like lambeq/DisCoCat, but with angles *derived from harmonic structure*
+rather than trained from scratch — a musically informed initialization for
+quantum machine learning on audio and text.
+
 ## 🔄 Quantum Entropy Analysis
 
 ### Entropy Reduction Comparison
